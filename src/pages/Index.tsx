@@ -1,14 +1,18 @@
-import HeroSection from "@/components/HeroSection";
-import ProductShowcase from "@/components/ProductShowcase";
+import EmotionalHero from "@/components/EmotionalHero";
+import ProductGrid from "@/components/ProductGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import MomentsSection from "@/components/MomentsSection";
+import ReviewsSection from "@/components/ReviewsSection";
 import CallToAction from "@/components/CallToAction";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <HeroSection />
-      <ProductShowcase />
+      <EmotionalHero />
+      <ProductGrid />
+      <TestimonialsSection />
       <MomentsSection />
+      <ReviewsSection />
       <CallToAction />
     </div>
   );

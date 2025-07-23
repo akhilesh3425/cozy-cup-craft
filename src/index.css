@@ -6,31 +6,39 @@
 
 @layer base {
   :root {
-    /* Coffee-inspired color palette */
-    --background: 35 25% 97%;
-    --foreground: 25 15% 15%;
+/* Latte-inspired color palette */
+    --background: 38 30% 96%;
+    --foreground: 28 18% 18%;
 
-    --card: 35 20% 98%;
-    --card-foreground: 25 15% 15%;
+    --card: 40 25% 98%;
+    --card-foreground: 28 18% 18%;
 
-    --popover: 35 20% 98%;
-    --popover-foreground: 25 15% 15%;
+    --popover: 40 25% 98%;
+    --popover-foreground: 28 18% 18%;
 
     /* Rich espresso brown as primary */
-    --primary: 25 25% 20%;
-    --primary-foreground: 35 25% 97%;
+    --primary: 28 25% 22%;
+    --primary-foreground: 38 30% 96%;
 
-    /* Creamy coffee with milk */
-    --secondary: 30 20% 88%;
-    --secondary-foreground: 25 25% 20%;
+    /* Creamy latte foam */
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 28 25% 22%;
 
-    /* Light coffee foam */
-    --muted: 35 15% 92%;
-    --muted-foreground: 25 10% 45%;
+    /* Soft milk foam */
+    --muted: 38 20% 94%;
+    --muted-foreground: 30 12% 48%;
 
-    /* Warm gold accent */
-    --accent: 40 55% 65%;
-    --accent-foreground: 25 25% 20%;
+    /* Warm caramel accent */
+    --accent: 35 60% 68%;
+    --accent-foreground: 28 25% 22%;
+
+    /* Soft cream highlights */
+    --cream: 42 40% 92%;
+    --cream-foreground: 28 18% 18%;
+
+    /* Rich mocha */
+    --mocha: 25 30% 15%;
+    --mocha-foreground: 42 40% 92%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 35 25% 97%;
@@ -132,14 +140,22 @@
   }
 }
 
-/* Coffee Gradients */
+/* Latte Gradients & Animations */
 @layer components {
   .coffee-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }
   
+  .latte-gradient {
+    background: linear-gradient(145deg, hsl(var(--cream)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+  }
+  
   .warm-gradient {
     background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+  }
+  
+  .mocha-gradient {
+    background: linear-gradient(135deg, hsl(var(--mocha)) 0%, hsl(var(--primary)) 100%);
   }
   
   .steam-particle {
@@ -152,5 +168,17 @@
   
   .coffee-shadow {
     box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  }
+  
+  .latte-shadow {
+    box-shadow: 0 8px 25px -8px hsl(var(--accent) / 0.25), 0 0 0 1px hsl(var(--cream));
+  }
+  
+  .product-card {
+    @apply bg-card rounded-2xl p-6 latte-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .star-rating {
+    @apply flex items-center gap-1 text-accent;
   }
 }
