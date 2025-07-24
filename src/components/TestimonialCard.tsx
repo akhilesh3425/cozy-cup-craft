@@ -13,6 +13,7 @@ interface TestimonialCardProps {
     role?: string;
   };
   emotionColor?: string;
+  delay?: number;
 }
 
 const TestimonialCard = ({ 
@@ -20,44 +21,44 @@ const TestimonialCard = ({
   emotion, 
   content, 
   author, 
-  emotionColor = "bg-primary/10 text-primary" 
+  emotionColor, 
+  delay = 0 
 }: TestimonialCardProps) => {
   const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    return name.split(" ").map(n => n[0]).join("").toUpperCase();
   };
+
+  const defaultEmotionColor = emotionClass(emotion);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ 
-        duration: 0.6, 
-        ease: [0.25, 0.46, 0.45, 0.94] 
-      }}
       whileHover={{ y: -5 }}
-      className="bg-background rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border/50"
+      className="bg-background rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border/50 space-y-4"
     >
-      {/* Emotion Badge */}
-      <div className="flex items-center justify-between mb-4">
-        <Badge className={`${emotionColor} font-medium`}>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-2">
+        <Badge className={`${emotionColor ?? defaultEmotionColor} font-medium`}>
           {emotion}
         </Badge>
-        <Quote className="w-6 h-6 text-muted-foreground/30" />
+        <Quote className="w-5 h-5 text-muted-foreground/30" />
       </div>
 
-      {/* Review Highlight */}
-      <h3 className="font-bold text-lg text-foreground mb-3 leading-tight">
+      {/* Highlight */}
+      <h3 className="font-bold text-lg text-foreground leading-tight">
         "{highlight}"
       </h3>
 
-      {/* Review Content */}
-      <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+      {/* Content */}
+      <p className="text-sm leading-relaxed text-muted-foreground">
         {content}
       </p>
 
-      {/* Author Info */}
-      <div className="flex items-center gap-3">
+      {/* Author */}
+      <div className="flex items-center gap-3 mt-2">
         <Avatar className="w-12 h-12 ring-2 ring-border">
           <AvatarImage 
             src={author.avatar} 
@@ -68,20 +69,31 @@ const TestimonialCard = ({
             {getInitials(author.name)}
           </AvatarFallback>
         </Avatar>
-        
-        <div className="flex-1">
-          <div className="font-bold text-foreground text-sm">
-            {author.name}
-          </div>
+
+        <div className="flex flex-col">
+          <span className="font-bold text-sm text-foreground">{author.name}</span>
           {author.role && (
-            <div className="text-xs text-muted-foreground">
-              {author.role}
-            </div>
+            <span className="text-xs text-muted-foreground">{author.role}</span>
           )}
         </div>
       </div>
     </motion.div>
   );
 };
+
+function emotionClass(emotion: string) {
+  switch (emotion.toLowerCase()) {
+    case "love":
+      return "bg-red-100 text-red-600";
+    case "comfort":
+      return "bg-yellow-100 text-yellow-600";
+    case "nostalgia":
+      return "bg-blue-100 text-blue-600";
+    case "excitement":
+      return "bg-purple-100 text-purple-600";
+    default:
+      return "bg-gray-100 text-gray-600";
+  }
+}
 
 export default TestimonialCard;

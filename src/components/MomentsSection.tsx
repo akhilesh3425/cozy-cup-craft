@@ -1,26 +1,29 @@
 import { Card } from "@/components/ui/card";
-import coupleImage from "@/assets/couple-coffee.jpg";
-
+import coupleImage from "@/assets/couple-love-drinking-coffee-coffee-shop.jpg";
+import coupleImage2 from "@/assets/couple-love-drinking-coffee-coffee-shop (1).jpg";
 const MomentsSection = () => {
   const moments = [
     {
       title: "Morning Rituals",
-      description: "Start each day with the comforting aroma and rich taste that awakens your senses.",
+      description:
+        "Start each day with the comforting aroma and rich taste that awakens your senses.",
       image: coupleImage,
-      time: "6:30 AM"
+      time: "6:30 AM",
     },
     {
       title: "Afternoon Breaks",
-      description: "Take a moment to pause and recharge with the perfect midday coffee companion.",
-      image: coupleImage,
-      time: "2:00 PM"
+      description:
+        "Take a moment to pause and recharge with the perfect midday coffee companion.",
+      image: coupleImage2,
+      time: "2:00 PM",
     },
     {
       title: "Evening Comfort",
-      description: "Wind down your day with the familiar warmth of your favorite coffee blend.",
+      description:
+        "Wind down your day with the familiar warmth of your favorite coffee blend.",
       image: coupleImage,
-      time: "7:00 PM"
-    }
+      time: "7:00 PM",
+    },
   ];
 
   return (
@@ -32,20 +35,20 @@ const MomentsSection = () => {
             <span className="text-accent"> Moment</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From the first sip that starts your day to the last that helps you unwind, 
-            Nescafé is there for all of life's precious moments.
+            From the first sip that starts your day to the last that helps you
+            unwind, Nescafé is there for all of life's precious moments.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {moments.map((moment, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="overflow-hidden group hover:scale-105 transition-transform duration-300 coffee-shadow"
             >
               <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={moment.image} 
+                <img
+                  src={moment.image}
                   alt={moment.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
@@ -54,7 +57,7 @@ const MomentsSection = () => {
                   {moment.time}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="font-serif text-2xl font-bold text-primary mb-3">
                   {moment.title}

@@ -2,7 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Heart, ShoppingCart, Package } from "lucide-react";
-import productImage from "@/assets/nescafe-sachet.jpg";
+import productImageSachet from "@/assets/nescafe-sachet.jpg";
+import productImage from "@/assets/nescafe.jpg";
 
 const ProductGrid = () => {
   const products = [
@@ -14,21 +15,22 @@ const ProductGrid = () => {
       originalPrice: 15.99,
       rating: 4.8,
       reviews: 324,
-      image: productImage,
+      image: productImageSachet,
       badge: "Best Seller",
-      inStock: true
+      inStock: true,
     },
     {
       id: 2,
       name: "Premium Espresso",
-      description: "Bold and intense flavor for the perfect espresso experience",
+      description:
+        "Bold and intense flavor for the perfect espresso experience",
       price: 16.99,
       originalPrice: null,
       rating: 4.9,
       reviews: 198,
       image: productImage,
       badge: "Premium",
-      inStock: true
+      inStock: true,
     },
     {
       id: 3,
@@ -40,7 +42,7 @@ const ProductGrid = () => {
       reviews: 156,
       image: productImage,
       badge: "Decaf",
-      inStock: false
+      inStock: false,
     },
     {
       id: 4,
@@ -52,8 +54,20 @@ const ProductGrid = () => {
       reviews: 289,
       image: productImage,
       badge: "New",
-      inStock: true
-    }
+      inStock: true,
+    },
+    {
+      id: 5,
+      name: "Natural",
+      description: "Smooth coffee with natural delicate notes",
+      price: 10.99,
+      originalPrice: null,
+      rating: 3.8,
+      reviews: 22,
+      image: productImage,
+      badge: "New",
+      inStock: true,
+    },
   ];
 
   const renderStars = (rating: number) => {
@@ -83,21 +97,33 @@ const ProductGrid = () => {
             <span className="text-accent"> Coffee Blend</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From bold espressos to smooth decafs, find the perfect cup that matches your mood and moment.
+            From bold espressos to smooth decafs, find the perfect cup that
+            matches your mood and moment.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
-            <Card key={product.id} className="product-card group relative overflow-hidden">
+            <Card
+              key={product.id}
+              className="product-card group relative overflow-hidden"
+            >
               {/* Product Badge */}
               <div className="absolute top-4 left-4 z-10">
-                <Badge 
+                <Badge
                   className={`
-                    ${product.badge === 'Best Seller' ? 'bg-accent text-accent-foreground' : ''}
-                    ${product.badge === 'Premium' ? 'bg-primary text-primary-foreground' : ''}
-                    ${product.badge === 'New' ? 'bg-green-500 text-white' : ''}
-                    ${product.badge === 'Decaf' ? 'bg-blue-500 text-white' : ''}
+                    ${
+                      product.badge === "Best Seller"
+                        ? "bg-accent text-accent-foreground"
+                        : ""
+                    }
+                    ${
+                      product.badge === "Premium"
+                        ? "bg-primary text-primary-foreground"
+                        : ""
+                    }
+                    ${product.badge === "New" ? "bg-green-500 text-white" : ""}
+                    ${product.badge === "Decaf" ? "bg-blue-500 text-white" : ""}
                   `}
                 >
                   {product.badge}
@@ -111,14 +137,16 @@ const ProductGrid = () => {
 
               {/* Product Image */}
               <div className="relative h-48 overflow-hidden rounded-xl mb-4">
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {!product.inStock && (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <span className="text-white font-semibold">Out of Stock</span>
+                    <span className="text-white font-semibold">
+                      Out of Stock
+                    </span>
                   </div>
                 )}
               </div>
@@ -128,7 +156,7 @@ const ProductGrid = () => {
                 <h3 className="font-serif text-xl font-bold text-primary">
                   {product.name}
                 </h3>
-                
+
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {product.description}
                 </p>
@@ -156,19 +184,23 @@ const ProductGrid = () => {
                 </div>
 
                 {/* Add to Cart Button */}
-                <Button 
+                <Button
                   className="w-full coffee-gradient text-primary-foreground hover:scale-105 transition-transform"
                   disabled={!product.inStock}
                 >
                   <ShoppingCart className="w-4 h-4 mr-2" />
-                  {product.inStock ? 'Add to Cart' : 'Notify Me'}
+                  {product.inStock ? "Add to Cart" : "Notify Me"}
                 </Button>
 
                 {/* Stock Status */}
                 <div className="flex items-center gap-2 text-sm">
                   <Package className="w-4 h-4" />
-                  <span className={product.inStock ? 'text-green-600' : 'text-red-500'}>
-                    {product.inStock ? 'In Stock' : 'Out of Stock'}
+                  <span
+                    className={
+                      product.inStock ? "text-green-600" : "text-red-500"
+                    }
+                  >
+                    {product.inStock ? "In Stock" : "Out of Stock"}
                   </span>
                 </div>
               </div>
@@ -177,8 +209,8 @@ const ProductGrid = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
           >
