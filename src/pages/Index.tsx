@@ -1,6 +1,6 @@
 import EmotionalHero from "@/components/EmotionalHero";
 import ProductGrid from "@/components/ProductGrid";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import { TestimonialSection } from "@/components/TestimonialsSection";
 import MomentsSection from "@/components/MomentsSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import CallToAction from "@/components/CallToAction";
@@ -10,7 +10,7 @@ const Index = () => {
     <div className="min-h-screen">
       <EmotionalHero />
       <ProductGrid />
-      <TestimonialsSection />
+      <TestimonialSection />
       <MomentsSection />
       <ReviewsSection />
       <CallToAction />

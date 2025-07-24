@@ -26,6 +26,19 @@
     transform: rotate(360deg);
   }
 }
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
