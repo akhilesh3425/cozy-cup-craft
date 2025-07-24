@@ -11,10 +11,11 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 5,
       title: "Perfect Morning Companion",
-      content: "This coffee has transformed my mornings. The aroma alone is enough to wake me up, and the taste is absolutely divine. It's become an essential part of my daily routine.",
+      content:
+        "This coffee has transformed my mornings. The aroma alone is enough to wake me up, and the taste is absolutely divine. It's become an essential part of my daily routine.",
       date: "2 days ago",
       verified: true,
-      product: "Classic Gold Blend"
+      product: "Classic Gold Blend",
     },
     {
       id: 2,
@@ -22,10 +23,11 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 4,
       title: "Rich and Smooth",
-      content: "As someone who drinks 4-5 cups a day, I can confidently say this is one of the best instant coffees I've tried. The consistency is remarkable.",
+      content:
+        "As someone who drinks 4-5 cups a day, I can confidently say this is one of the best instant coffees I've tried. The consistency is remarkable.",
       date: "1 week ago",
       verified: true,
-      product: "Premium Espresso"
+      product: "Premium Espresso",
     },
     {
       id: 3,
@@ -33,10 +35,11 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 5,
       title: "Exceeded Expectations",
-      content: "I was skeptical about instant coffee, but this completely changed my mind. The flavor profile is complex and satisfying. Will definitely reorder!",
+      content:
+        "I was skeptical about instant coffee, but this completely changed my mind. The flavor profile is complex and satisfying. Will definitely reorder!",
       date: "2 weeks ago",
       verified: true,
-      product: "French Vanilla"
+      product: "French Vanilla",
     },
     {
       id: 4,
@@ -44,10 +47,11 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 5,
       title: "Family Favorite",
-      content: "Our whole family loves this coffee. From teenagers to grandparents, everyone finds something to enjoy. It's our go-to choice for family gatherings.",
+      content:
+        "Our whole family loves this coffee. From teenagers to grandparents, everyone finds something to enjoy. It's our go-to choice for family gatherings.",
       date: "3 weeks ago",
       verified: true,
-      product: "Classic Gold Blend"
+      product: "Classic Gold Blend",
     },
     {
       id: 5,
@@ -55,10 +59,11 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 4,
       title: "Great Value",
-      content: "The quality-to-price ratio is excellent. You get premium taste without the premium price tag. Perfect for everyday enjoyment.",
+      content:
+        "The quality-to-price ratio is excellent. You get premium taste without the premium price tag. Perfect for everyday enjoyment.",
       date: "1 month ago",
       verified: true,
-      product: "Decaf Delight"
+      product: "Decaf Delight",
     },
     {
       id: 6,
@@ -66,11 +71,12 @@ const ReviewsSection = () => {
       avatar: "/placeholder.svg",
       rating: 5,
       title: "Coffee Shop Quality",
-      content: "I'm impressed by how close this comes to my favorite coffee shop's taste. Now I can enjoy premium coffee at home anytime I want.",
+      content:
+        "I'm impressed by how close this comes to my favorite coffee shop's taste. Now I can enjoy premium coffee at home anytime I want.",
       date: "1 month ago",
       verified: false,
-      product: "Premium Espresso"
-    }
+      product: "Premium Espresso",
+    },
   ];
 
   const renderStars = (rating: number) => {
@@ -85,7 +91,11 @@ const ReviewsSection = () => {
   };
 
   const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -100,11 +110,11 @@ const ReviewsSection = () => {
             <span className="text-accent"> Say</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of satisfied customers who have made Nescafé their daily choice for perfect coffee moments.
+            Join thousands of satisfied customers who have made Nescafé their
+            daily choice for perfect coffee moments.
           </p>
         </div>
 
-        {/* Overall Rating Summary */}
         <div className="bg-card rounded-2xl p-8 mb-12 text-center latte-shadow">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div>
@@ -112,24 +122,36 @@ const ReviewsSection = () => {
               <div className="flex items-center justify-center mb-2">
                 {renderStars(5)}
               </div>
-              <div className="text-muted-foreground">Based on 1,247 reviews</div>
+              <div className="text-muted-foreground">
+                Based on 1,247 reviews
+              </div>
             </div>
-            
+
             <div className="space-y-2">
               {[5, 4, 3, 2, 1].map((stars) => (
                 <div key={stars} className="flex items-center gap-3">
                   <span className="text-sm w-8">{stars}</span>
                   <Star className="w-4 h-4 fill-accent text-accent" />
                   <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-accent"
-                      style={{ 
-                        width: `${stars === 5 ? 75 : stars === 4 ? 20 : stars === 3 ? 3 : stars === 2 ? 1 : 1}%` 
+                      style={{
+                        width: `${
+                          stars === 5
+                            ? 75
+                            : stars === 4
+                            ? 20
+                            : stars === 3
+                            ? 3
+                            : stars === 2
+                            ? 1
+                            : 1
+                        }%`,
                       }}
                     />
                   </div>
                   <span className="text-sm text-muted-foreground w-8">
-                    {stars === 5 ? '75%' : stars === 4 ? '20%' : '3%'}
+                    {stars === 5 ? "75%" : stars === 4 ? "20%" : "3%"}
                   </span>
                 </div>
               ))}
@@ -137,29 +159,25 @@ const ReviewsSection = () => {
           </div>
         </div>
 
-        {/* Reviews Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviews.map((review) => (
-            <Card key={review.id} className="p-6 latte-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              {/* Quote Icon */}
+            <Card
+              key={review.id}
+              className="p-6 latte-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
               <Quote className="w-8 h-8 text-accent/30 mb-4" />
-              
-              {/* Rating */}
+
               <div className="flex items-center gap-2 mb-4">
-                <div className="star-rating">
-                  {renderStars(review.rating)}
-                </div>
+                <div className="star-rating">{renderStars(review.rating)}</div>
                 <span className="text-sm text-muted-foreground">
                   {review.date}
                 </span>
               </div>
 
-              {/* Review Title */}
               <h3 className="font-serif text-lg font-semibold text-primary mb-3">
                 {review.title}
               </h3>
 
-              {/* Review Content */}
               <p className="text-muted-foreground leading-relaxed mb-6">
                 {review.content}
               </p>
@@ -169,7 +187,6 @@ const ReviewsSection = () => {
                 {review.product}
               </Badge>
 
-              {/* Reviewer Info */}
               <div className="flex items-center gap-3">
                 <Avatar className="w-10 h-10">
                   <AvatarImage src={review.avatar} alt={review.name} />
@@ -177,7 +194,7 @@ const ReviewsSection = () => {
                     {getInitials(review.name)}
                   </AvatarFallback>
                 </Avatar>
-                
+
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <span className="font-medium text-primary">
